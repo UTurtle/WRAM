@@ -468,89 +468,95 @@ def main():
         json.dumps(meta, indent=2) + "\n"
     )
     lines = [
-        "# 실제 coreset 투영·선택 그림 — v5",
+        "# Coreset projection and selection figures — v5",
         "",
         (
-            "이번 폴더는 정규화 loading 계수를 제거한 공개 구현의 Dev fan 정상"
-            " 1,000개 임베딩에서 만들었습니다. 기존 v4는 계수 0.005 결과이므로"
-            " 같은 계산 결과로 섞어 쓰지 마세요."
+            "These figures use 1,000 normal Development/fan embeddings from"
+            " the public implementation without the normalized loading"
+            " coefficient. Earlier v4 figures used a coefficient of 0.005;"
+            " do not combine them as results from the same calculation."
         ),
         "",
-        "## 바로 사용할 파일",
+        "## Main files",
         "",
-        "- `CONTACT_SHEET_CORESET.png`: 투영과 선택을 비교하는 설명용 모음.",
+        "- `CONTACT_SHEET_CORESET.png`: overview of projection and selection.",
         (
-            "- `tiles/03_projected_coreset128_common_view_overlay.png`: 빠져"
-            " 있던 투영 기반 coreset 선택 결과. 01, 02와 동일한 좌표입니다."
+            "- `tiles/03_projected_coreset128_common_view_overlay.png`:"
+            " projected coreset selection on the same coordinates as 01"
+            " and 02."
         ),
         (
-            "- `tiles/04_all1000_projected_space.png`: 실제 256차원 투영"
-            " 결과를 별도 PCA로 2차원에 표시."
+            "- `tiles/04_all1000_projected_space.png`: the actual 256-D"
+            " projection displayed in 2-D with a separate PCA."
         ),
         (
-            "- `tiles/05_projected_coreset128_projected_space_overlay.png`: 그"
-            " 256차원 공간에서 선택한 128개."
+            "- `tiles/05_projected_coreset128_projected_space_overlay.png`:"
+            " 128 recordings selected in that 256-D space."
         ),
         (
-            "- `tiles/06_projected_coreset128_common_view_only.png`: 선택된"
-            " 128개만 원래 PCA 좌표에 표시."
+            "- `tiles/06_projected_coreset128_common_view_only.png`:"
+            " selected recordings on the original PCA coordinates."
         ),
         (
-            "- `tiles/10_projected_embedding_matrix_1000x256.png`: 실제 투영"
-            " 임베딩 행렬."
+            "- `tiles/10_projected_embedding_matrix_1000x256.png`:"
+            " the actual projected embedding matrix."
         ),
         (
-            "- 모든 개별 PNG는 제목·축·눈금·테두리 없는 투명 배경입니다."
-            " 파일별 의미와 스케일은 아래와 `TILE_INDEX.csv`에 있습니다."
-        ),
-        "",
-        "## 그림의 정확한 의미",
-        "",
-        (
-            "1. **선택용 투영**: 6,144 → 256차원 Gaussian 투영입니다. 과거"
-            " 로컬 구현의 seed 20260613 및 스케일을 그대로 적용했습니다."
-            " centroid에서 가장 가까운 점부터 exact greedy FPS128을"
-            " 수행합니다. PatchCore의 approximate sampler 자체를 재현했다는"
-            " 뜻은 아닙니다."
-        ),
-        (
-            "2. **표시용 투영**: 그림은 사람이 볼 수 있도록 PCA 2차원으로"
-            " 표시했습니다. 이 좌표에서 FPS를 수행하지 않았습니다. 정상"
-            " 데이터만으로 PCA를 맞췄습니다."
-        ),
-        (
-            "3. 01/02/03/06/07/08/09는 같은 원래 임베딩 PCA 좌표와 축 범위를"
-            " 씁니다. 04/05는 같은 별도 투영 임베딩 PCA 좌표입니다. 서로 다른"
-            " PCA 좌표의 형태 변화만으로 정보 보존이나 성능을 판단할 수"
-            " 없습니다."
-        ),
-        (
-            "4. 두 128개 선택 집합의 공통 녹음은"
-            f' **{meta["shared_selected_ids"]}개**입니다. 09에서 청록=공통,'
-            " 빨강=원래 FPS만, 금색 사각형=투영 coreset만입니다."
-        ),
-        (
-            "5. 투영은 **선택할 ID를 정하는 데만** 사용합니다. 매칭용 참조는"
-            " 해당 ID의 원래 8×768 descriptor입니다. 이 폴더의 투영 정책은"
-            " 시각화용으로 계산했고, 전체 Dev/Eval hmean을 아직 산출하지"
-            " 않았습니다."
-        ),
-        (
-            "6. Query는 고정 index 0입니다. 정상 reference 선택·투영·PCA를"
-            " 학습하는 데 사용하지 않았습니다. 특정 예시이며 전체 샘플의 대표"
-            " 효과를 입증하지 않습니다."
-        ),
-        (
-            "7. Random 세 개는 각각 고정 seed의 source/target 수를 FPS128과"
-            " 맞춘 대조입니다."
-        ),
-        (
-            "8. Local-scale 그림은 같은 FPS128 ID와 같은 열 순서를 씁니다."
-            " fixed-refit과 rematch의 비용 행렬은 같고, 사용하는 winner만"
-            " 달라집니다."
+            "- Individual PNGs have transparent backgrounds and no titles,"
+            " axes, ticks, or borders. Their meanings and scales are"
+            " documented below and in `TILE_INDEX.csv`."
         ),
         "",
-        "## 다이어그램에 붙일 문구",
+        "## How to read the figures",
+        "",
+        (
+            "1. **Selection projection:** a 6,144-to-256-dimensional"
+            " Gaussian projection using the seed 20260613 and scaling of"
+            " the historical local implementation. Exact greedy FPS128"
+            " starts at the point nearest the centroid. This is not a"
+            " reproduction of PatchCore's approximate sampler."
+        ),
+        (
+            "2. **Display projection:** a separate 2-D PCA makes the"
+            " embeddings visible. FPS was not performed on these"
+            " coordinates. PCA was fitted using normal data only."
+        ),
+        (
+            "3. Tiles 01/02/03/06/07/08/09 share original-embedding PCA"
+            " coordinates and axis limits. Tiles 04/05 share separate"
+            " projected-embedding PCA coordinates. Shape differences"
+            " between these views alone do not establish information"
+            " preservation or performance."
+        ),
+        (
+            "4. The two 128-recording selections share"
+            f' **{meta["shared_selected_ids"]} recordings**. In tile 09,'
+            " teal marks shared recordings, red marks original-space"
+            " FPS only, and gold squares mark projected coreset only."
+        ),
+        (
+            "5. Projection is used **only to select recording IDs**."
+            " Matching uses those recordings' original 8-by-768"
+            " descriptors. The projected policy here was computed for"
+            " visualization; this folder does not report its full"
+            " Development/Evaluation hmean."
+        ),
+        (
+            "6. The query has fixed index 0. It was not used to fit"
+            " normal-reference selection, projection, or PCA. This is"
+            " one example, not evidence of an effect across all queries."
+        ),
+        (
+            "7. Each of the three random controls uses a fixed seed and"
+            " matches the source/target counts of FPS128."
+        ),
+        (
+            "8. The local-scale figures use the same FPS128 IDs and"
+            " column order. Fixed-refit and rematch have the same cost"
+            " matrix; only the selected winner differs."
+        ),
+        "",
+        "## Diagram labels",
         "",
         (
             "`Normal descriptors → Gaussian projection (6144 → 256, for"
@@ -559,26 +565,27 @@ def main():
         ),
         "",
         (
-            "현재 주 시스템 경로는 `Normal descriptors → FPS128 (original"
-            " space) → Reference bank`입니다. 투영 경로는 비교한 선택 방식으로"
-            " 별도 가지를 그리세요."
+            "The primary system follows `Normal descriptors → FPS128"
+            " (original space) → Reference bank`. Show projected"
+            " selection as a separate comparison branch."
         ),
         "",
-        "## 재현 근거",
+        "## Reproduction files",
         "",
         (
-            "`selection_arrays.npz`에는 실제 임베딩, 투영 행렬, 선택 ID,"
-            " 원공간 거리와 matching 수치가 있습니다."
-            " `display_coordinates.npz`에는 PCA 좌표와 basis가 있습니다."
-            " `SELECTED_RECORDINGS.csv`는 각 이미지의 샘플 ID를 연결합니다."
+            "`selection_arrays.npz` contains embeddings, the projection"
+            " matrix, selected IDs, original-space distances, and matching"
+            " values. `display_coordinates.npz` contains PCA coordinates"
+            " and bases. `SELECTED_RECORDINGS.csv` links sample IDs to"
+            " each image."
         ),
         "",
-        "## 개별 파일",
+        "## Individual files",
         "",
     ]
     for row in index:
         lines.extend([f'### {row["file"]}', row["meaning"], row["scale"], ""])
-    (folder / "README_KO.md").write_text("\n".join(lines) + "\n")
+    (folder / "README.md").write_text("\n".join(lines) + "\n")
     for script in [
         "prepare_reference_visuals.py",
         "render_reference_tiles.py",
@@ -590,7 +597,7 @@ def main():
         for path in sorted(tiles.glob("*.png")):
             archive.write(path, path.relative_to(folder))
         for name in [
-            "README_KO.md",
+            "README.md",
             "TILE_INDEX.csv",
             "SELECTED_RECORDINGS.csv",
             "CONTACT_SHEET_CORESET.png",
