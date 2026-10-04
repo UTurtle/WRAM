@@ -1,0 +1,12 @@
+{
+  "upstream": "https://github.com/microsoft/unilm/tree/master/beats",
+  "license": "MIT with retained third-party notices",
+  "snapshot": "BEATs source used in the archived WRAM reproduction; relative package imports in the local snapshot. No claim of byte identity to current upstream master.",
+  "files": {
+    "BEATs.py": "b2744e518fe310c8229e727b5b704b089cd9139a1a6c9c4ec61c3080c511b71e",
+    "backbone.py": "15b2d621d4a47e937d2a12ce6c3f4626b68fe04e027b8616ad3efb054bc39d41",
+    "modules.py": "edeb6b6cd6a784da749f932c3e0783c0bce556fc768d0d23a4d53d4b819eb424",
+    "LICENSE": "b5cb7ff7859e7d282d98fc43ab081b0dda5dc659dc3385cf65740c759a7e6a6c",
+    "NOTICE.md": "356d6916736c03fd62144efb01bc045e69b9d41875a09f04f30ca571951c9459"
+  }
+}

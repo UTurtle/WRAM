@@ -1,0 +1,9 @@
+{
+  "upstream": "https://github.com/amazon-science/patchcore-inspection",
+  "commit": "fcaa92f124fb1ad74a7acf56726decd4b27cbcad",
+  "source_path": "src/patchcore/sampler.py",
+  "sampler_sha256": "39612cd2b486865ece304348f740f4bc700a1c2e8684fbab3c2ed016c7801f2d",
+  "license": "Apache-2.0",
+  "license_sha256": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b",
+  "modifications": "none"
+}

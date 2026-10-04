@@ -1,0 +1,11 @@
+{
+  "run_contract_sha256": "8bfe6170dff74c0df051936603c0427b4c52e33d6fcf286b2bd39cb5960cbbc8",
+  "prediction_freeze_sha256": "70ab04f28212f517a041e4a0241dfb5b15ee5fc6c88bf00d1f852820ae6c2930",
+  "normal_freeze_sha256": "981f1389ad801ece88bdff36423b940d78ea3a6da246435ab703376b21521572",
+  "label_access_sha256": "c3a834ea5526c8bef48feb39927bdab8c3d7da05acb0c66a8b35011744070204",
+  "source_sampler_sha256": "39612cd2b486865ece304348f740f4bc700a1c2e8684fbab3c2ed016c7801f2d",
+  "script_sha256": "fb0fda8cbbbdcb7155ea5dd7cda067bed630659d51a90c9fdf480347c20497fb",
+  "upstream_commit": "fcaa92f124fb1ad74a7acf56726decd4b27cbcad",
+  "cpu_selection_seconds": 2.752015104983002,
+  "scope": "official approximate greedy sampler on WRAM descriptors only; one fixed seed, K64/128/256, historical Dev/Eval, no encoder forward"
+}

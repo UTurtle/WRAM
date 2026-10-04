@@ -1,0 +1,7 @@
+{
+  "existing_prediction_vectors_compared": 48,
+  "max_prediction_difference": 6.061817714453355e-14,
+  "nested_bank_prefix_checks": 24,
+  "projected128_ids_match_previous": true,
+  "seed_count": 1
+}

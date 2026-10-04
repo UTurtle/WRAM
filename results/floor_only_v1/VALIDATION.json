@@ -1,0 +1,40 @@
+{
+  "numeric_status": "PASS",
+  "full_auditor_certification": false,
+  "max_independent_roc_error": 2.220446049250313e-16,
+  "query_recordings": 2400,
+  "source_snapshot": {
+    "__init__.py": "06087b0548a14d090768388ef1a0f1cbd06d6a2c66aa542752e013315e92bb88",
+    "__main__.py": "cf7390a2508a0fcad4777a4a629fc5212ab655cb45845975995f835676a834e3",
+    "_vendor/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_vendor/beats/BEATs.py": "b2744e518fe310c8229e727b5b704b089cd9139a1a6c9c4ec61c3080c511b71e",
+    "_vendor/beats/LICENSE": "b5cb7ff7859e7d282d98fc43ab081b0dda5dc659dc3385cf65740c759a7e6a6c",
+    "_vendor/beats/NOTICE.md": "356d6916736c03fd62144efb01bc045e69b9d41875a09f04f30ca571951c9459",
+    "_vendor/beats/__init__.py": "25f9eb85b10572e89d671639ebc6bfd549e98a5d850b24db4a5fd4f22eb3e8da",
+    "_vendor/beats/backbone.py": "15b2d621d4a47e937d2a12ce6c3f4626b68fe04e027b8616ad3efb054bc39d41",
+    "_vendor/beats/modules.py": "edeb6b6cd6a784da749f932c3e0783c0bce556fc768d0d23a4d53d4b819eb424",
+    "analysis.py": "3d0bbf7bd565c9b07047d63c78c4b1025ef6b6d8f435fedc8450995558fd38f0",
+    "cli.py": "ea612a15e7c4bc0d9300ea75d9a45c7f9fd6c96d0eadfc057cf3ec89009773ec",
+    "frontend.py": "aeda858d63c8124cea6dccb3ece09e09952065d02bc1e43a8ccbc8844f175209",
+    "io.py": "9a5fd3675b866b991a6fd06a8ec129b79760fd6b799bbb38b51475cb06924c1c",
+    "metrics.py": "23a88d19f4e1e0b4d300320c4abecc7acb34500e91d2ba6e137fb8d943fc1ef8",
+    "pipeline.py": "41e34bcf25dbc389950b5cf44a1cf0146db2a7e37f3e4f1663cf4e9a8c2209b1",
+    "reference.py": "89b91dc0ff83413c1a4743514a1472708e5cc185362e06e1e8237402b492ef03"
+  },
+  "run_contract_sha256": "5da51164e4aad48199a7ae29e81f697b37439059262b889620b65c81de1baf7c",
+  "labels_sha256": "09aab0de79126bfe94294995a62cf077272d596ee27a3a77f951527cade9b096",
+  "primary": [
+    {
+      "split": "Dev",
+      "condition": "wiener_rdp4|fps|ratio|1|updated",
+      "hmean": 67.69078134123421,
+      "components": 21
+    },
+    {
+      "split": "Eval",
+      "condition": "wiener_rdp4|fps|ratio|1|updated",
+      "hmean": 67.360101648158,
+      "components": 15
+    }
+  ]
+}

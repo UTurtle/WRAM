@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wram-asd"
+version = "0.1.0"
+description = "Reproducible Wiener Residual Audio Matching with frozen BEATs"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {file = "LICENSE"}
+authors = [{name = "LUDO Lab"}]
+dependencies = ["numpy>=2.0", "torch>=2.5,<2.6", "torchaudio>=2.5,<2.6", "soundfile>=0.12", "scikit-learn>=1.5"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+visuals = ["matplotlib>=3.8", "Pillow>=10"]
+patchcore = ["tqdm>=4.60"]
+
+[project.scripts]
+wram = "wram.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"wram._vendor.beats" = ["LICENSE", "NOTICE.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.black]
+line-length = 79
+target-version = ["py311"]
+force-exclude = '/(src/wram/_vendor|vendor|artifacts|build|dist|\.local)/'
+
+[tool.ruff]
+line-length = 79
+target-version = "py311"
+extend-exclude = ["src/wram/_vendor", "vendor", "artifacts", "build", "dist", ".local"]
+
+[tool.ruff.lint]
+select = ["E", "W"]

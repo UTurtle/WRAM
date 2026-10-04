@@ -1,0 +1,13 @@
+split,condition,hmean,components
+Dev,wiener_rdp4|fps256|ratio|1|updated,67.01199512822002,21
+Dev,wiener_rdp4|fps64|ratio|1|updated,65.82696500106012,21
+Dev,wiener_rdp4|fps|ratio|1|updated,67.69078134123421,21
+Dev,wiener_rdp4|projected256_fps128|ratio|1|updated,67.38096087265427,21
+Dev,wiener_rdp4|projected256_fps256|ratio|1|updated,65.62596732752128,21
+Dev,wiener_rdp4|projected256_fps64|ratio|1|updated,66.91728208282451,21
+Eval,wiener_rdp4|fps256|ratio|1|updated,66.84547652506957,15
+Eval,wiener_rdp4|fps64|ratio|1|updated,64.94671897106656,15
+Eval,wiener_rdp4|fps|ratio|1|updated,67.360101648158,15
+Eval,wiener_rdp4|projected256_fps128|ratio|1|updated,67.77559859202351,15
+Eval,wiener_rdp4|projected256_fps256|ratio|1|updated,67.68320644951295,15
+Eval,wiener_rdp4|projected256_fps64|ratio|1|updated,67.71771400871405,15

@@ -1,0 +1,16 @@
+{
+  "official_sampler_sha256": "39612cd2b486865ece304348f740f4bc700a1c2e8684fbab3c2ed016c7801f2d",
+  "official_commit": "fcaa92f124fb1ad74a7acf56726decd4b27cbcad",
+  "official_run_on_real_fan_matches_selected_ids": true,
+  "normal_banks_frozen_before_queries": true,
+  "predictions_frozen_before_label_evaluation": true,
+  "verified_prefix_relations": 24,
+  "unique_recording_ids_per_bank": true,
+  "machine_rows": 36,
+  "aggregate_rows": 6,
+  "component_hmean_recomputed": true,
+  "labels_sha256": "09aab0de79126bfe94294995a62cf077272d596ee27a3a77f951527cade9b096",
+  "numeric_status": "PASS",
+  "full_external_audit": false,
+  "historical_dev_eval_observed": true
+}

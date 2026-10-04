@@ -1,0 +1,7 @@
+split,condition,hmean,components
+Dev,wiener_rdp4|patchcore_approx128|ratio|1|updated,67.02232961027634,21
+Dev,wiener_rdp4|patchcore_approx256|ratio|1|updated,65.79141067932561,21
+Dev,wiener_rdp4|patchcore_approx64|ratio|1|updated,66.7348705149163,21
+Eval,wiener_rdp4|patchcore_approx128|ratio|1|updated,66.883851393711,15
+Eval,wiener_rdp4|patchcore_approx256|ratio|1|updated,65.84404129672217,15
+Eval,wiener_rdp4|patchcore_approx64|ratio|1|updated,64.98195933559786,15

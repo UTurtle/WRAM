@@ -1,0 +1,7 @@
+{
+  "time": "2026-09-24T05:06:15.004698+00:00",
+  "labels_sha256": "09aab0de79126bfe94294995a62cf077272d596ee27a3a77f951527cade9b096",
+  "prediction_freeze_sha256": "70ab04f28212f517a041e4a0241dfb5b15ee5fc6c88bf00d1f852820ae6c2930",
+  "historical_dev_eval_observed": true,
+  "post_hoc": true
+}

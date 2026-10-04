@@ -1,0 +1,130 @@
+{
+  "status": "PASS",
+  "machines": 12,
+  "normal_recordings": 12000,
+  "query_recordings": 2400,
+  "reference": "Archived c=0 raw-audio loading ablation",
+  "new_execution": "Installed wheel run from outside repository; all features re-extracted from raw audio",
+  "checks": [
+    {
+      "split": "Dev",
+      "machine": "ToyCar",
+      "query_ids_match": true,
+      "selected_ids_match": true,
+      "query_feature_max_error": 0.0,
+      "selected_feature_max_error": 2.220446049250313e-16,
+      "local_scale_max_error": 9.992007221626409e-16,
+      "prediction_max_error": 4.218847493575595e-14
+    },
+    {
+      "split": "Dev",
+      "machine": "ToyCarEmu",
+      "query_ids_match": true,
+      "selected_ids_match": true,
+      "query_feature_max_error": 0.0,
+      "selected_feature_max_error": 2.220446049250313e-16,
+      "local_scale_max_error": 1.1102230246251565e-15,
+      "prediction_max_error": 5.88418203051333e-14
+    },
+    {
+      "split": "Dev",
+      "machine": "bearingEmu",
+      "query_ids_match": true,
+      "selected_ids_match": true,
+      "query_feature_max_error": 0.0,
+      "selected_feature_max_error": 2.220446049250313e-16,
+      "local_scale_max_error": 1.1102230246251565e-15,
+      "prediction_max_error": 6.461498003318411e-14
+    },
+    {
+      "split": "Dev",
+      "machine": "fan",
+      "query_ids_match": true,
+      "selected_ids_match": true,
+      "query_feature_max_error": 0.0,
+      "selected_feature_max_error": 2.220446049250313e-16,
+      "local_scale_max_error": 1.1102230246251565e-15,
+      "prediction_max_error": 8.681944052568724e-14
+    },
+    {
+      "split": "Dev",
+      "machine": "gearboxEmu",
+      "query_ids_match": true,
+      "selected_ids_match": true,
+      "query_feature_max_error": 0.0,
+      "selected_feature_max_error": 2.220446049250313e-16,
+      "local_scale_max_error": 1.1657341758564144e-15,
+      "prediction_max_error": 5.617728504603292e-14
+    },
+    {
+      "split": "Dev",
+      "machine": "sliderEmu",
+      "query_ids_match": true,
+      "selected_ids_match": true,
+      "query_feature_max_error": 0.0,
+      "selected_feature_max_error": 3.3306690738754696e-16,
+      "local_scale_max_error": 1.0547118733938987e-15,
+      "prediction_max_error": 5.750955267558311e-14
+    },
+    {
+      "split": "Dev",
+      "machine": "valveEmu",
+      "query_ids_match": true,
+      "selected_ids_match": true,
+      "query_feature_max_error": 0.0,
+      "selected_feature_max_error": 2.220446049250313e-16,
+      "local_scale_max_error": 1.27675647831893e-15,
+      "prediction_max_error": 7.571721027943568e-14
+    },
+    {
+      "split": "Eval",
+      "machine": "BlowerDustCollector",
+      "query_ids_match": true,
+      "selected_ids_match": true,
+      "query_feature_max_error": 0.0,
+      "selected_feature_max_error": 2.220446049250313e-16,
+      "local_scale_max_error": 9.992007221626409e-16,
+      "prediction_max_error": 5.728750807065808e-14
+    },
+    {
+      "split": "Eval",
+      "machine": "Sander",
+      "query_ids_match": true,
+      "selected_ids_match": true,
+      "query_feature_max_error": 0.0,
+      "selected_feature_max_error": 2.220446049250313e-16,
+      "local_scale_max_error": 1.0547118733938987e-15,
+      "prediction_max_error": 3.175237850427948e-14
+    },
+    {
+      "split": "Eval",
+      "machine": "SewingMachine",
+      "query_ids_match": true,
+      "selected_ids_match": true,
+      "query_feature_max_error": 0.0,
+      "selected_feature_max_error": 2.220446049250313e-16,
+      "local_scale_max_error": 1.1102230246251565e-15,
+      "prediction_max_error": 3.1308289294429414e-14
+    },
+    {
+      "split": "Eval",
+      "machine": "ToothBrush",
+      "query_ids_match": true,
+      "selected_ids_match": true,
+      "query_feature_max_error": 0.0,
+      "selected_feature_max_error": 2.220446049250313e-16,
+      "local_scale_max_error": 1.27675647831893e-15,
+      "prediction_max_error": 9.9253938401489e-14
+    },
+    {
+      "split": "Eval",
+      "machine": "ToyDrone",
+      "query_ids_match": true,
+      "selected_ids_match": true,
+      "query_feature_max_error": 0.0,
+      "selected_feature_max_error": 3.3306690738754696e-16,
+      "local_scale_max_error": 1.27675647831893e-15,
+      "prediction_max_error": 6.816769371198461e-14
+    }
+  ]
+}
