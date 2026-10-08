@@ -13,7 +13,6 @@ authors = [{name = "LUDO Lab"}]
 dependencies = ["numpy>=2.0", "torch>=2.5,<2.6", "torchaudio>=2.5,<2.6", "soundfile>=0.12", "scikit-learn>=1.5"]
 
 [project.optional-dependencies]
-test = ["pytest>=8"]
 visuals = ["matplotlib>=3.8", "Pillow>=10"]
 patchcore = ["tqdm>=4.60"]
 
@@ -25,9 +24,6 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 "wram._vendor.beats" = ["LICENSE", "NOTICE.md"]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
 
 [tool.black]
 line-length = 79
