@@ -6,7 +6,6 @@ approximate sampler). Run with the same torch environment as WRAM.
 """
 
 import argparse
-import hashlib
 import json
 from pathlib import Path
 
@@ -14,10 +13,7 @@ import numpy as np
 import torch
 
 from wram.reference import fps
-
-
-def digest(path):
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+from wram.io import check_run
 
 
 def main():
@@ -32,9 +28,7 @@ def main():
     root = a.run / "features" / a.split / a.machine
     feature_path = root / "normal" / "wiener_rdp4.npy"
     model_path = a.run / "models" / f"{a.split}_{a.machine}.json"
-    contract = json.loads((a.run / "RUN_CONTRACT.json").read_text())
-    if contract["status"] != "completed":
-        raise ValueError("Use a completed, immutable inference run")
+    run_info = check_run(a.run)
     normal = np.load(feature_path)
     query = np.load(root / "query" / "wiener_rdp4.npy")[0]
     banks = json.loads(model_path.read_text())["wiener_rdp4"]
@@ -128,9 +122,9 @@ def main():
         split=a.split,
         machine=a.machine,
         view="wiener_rdp4",
-        wiener_mode=contract["config"]["wiener_mode"],
+        wiener_mode=run_info["config"]["wiener_mode"],
         coefficient_loading=0,
-        numerical_epsilon=contract["config"]["epsilon"],
+        numerical_epsilon=run_info["config"]["epsilon"],
         normal_count=len(normal),
         feature_shape=list(normal.shape),
         projected_shape=list(projected.shape),
@@ -143,24 +137,11 @@ def main():
             "Historical selection recipe reapplied to fresh floor-only"
             " descriptors; no projected-policy ASD metric computed"
         ),
-        selection_labels_used=False,
-        query_affects_selection=False,
         query_index=0,
         shared_selected_ids=len(common),
         union_selected_ids=len(set(original_ids) | set(projected_ids)),
         coverage=coverage,
         original_fps_ids_match_run=True,
-        source_hashes={
-            str(t.relative_to(a.run)): digest(t)
-            for t in [
-                feature_path,
-                model_path,
-                root / "normal" / "RECORDS.json",
-                root / "query" / "wiener_rdp4.npy",
-                a.run / "RUN_CONTRACT.json",
-            ]
-        },
-        script_sha256=digest(Path(__file__)),
         torch=torch.__version__,
         numpy=np.__version__,
     )

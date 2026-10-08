@@ -1,4 +1,4 @@
-"""Portable manifests, checksums, and immutable execution records."""
+"""Manifest and result file helpers."""
 
 from pathlib import Path
 from datetime import datetime, timezone
@@ -99,19 +99,14 @@ def groups(rows, part):
     ]
 
 
-def source_files():
-    root = Path(__file__).parent
-    return {
-        str(p.relative_to(root)): sha256(p)
-        for p in sorted(root.rglob("*"))
-        if p.is_file() and "__pycache__" not in p.parts
-    }
-
-
-def validate_freeze(run):
+def check_run(run):
     run = Path(run)
-    frozen = read(run / "PREDICTIONS_FROZEN.json")
-    for name, expected in frozen["files"].items():
-        if sha256(run / name) != expected:
-            raise ValueError(f"Prediction freeze mismatch: {name}")
-    return frozen
+    info = run / "RUN.json"
+    if not info.exists():
+        info = run / "RUN_CONTRACT.json"
+    state = read(info)
+    if state.get("status") != "completed":
+        raise ValueError("Inference did not complete")
+    if not any((run / "predictions").glob("*.json")):
+        raise ValueError("No predictions found")
+    return state

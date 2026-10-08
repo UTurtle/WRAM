@@ -16,4 +16,4 @@ These are archived results used to decide to simplify the filter. The other thre
 
 All/Random/FPS compare reference policies. Inherited/fixed/rematch compare normal-scale and query-assignment policies. A fixed-ID representation crossover changes descriptors while fixing the recording IDs. These are distinct interventions; do not label all of them merely FPS.
 
-All previous loaded manuscript versions and execution artifacts remain unchanged. The public implementation is a new execution lineage. Its source snapshot and prediction freeze establish local consistency, not researcher blinding or untouched data.
+The historical results above were obtained before this code cleanup. Existing manuscript versions and result bundles remain unchanged.

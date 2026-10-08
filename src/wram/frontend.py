@@ -2,7 +2,6 @@
 
 from pathlib import Path
 from contextlib import nullcontext
-import hashlib
 
 import numpy as np
 import soundfile as sf
@@ -99,11 +98,7 @@ class AudioRecords(torch.utils.data.Dataset):
         if len(x) < 160000:
             x = np.pad(x, ((0, 160000 - len(x)), (0, 0)))
         wave = torch.from_numpy(x[:160000].T.copy())
-        return wave, dict(
-            id=row["id"],
-            audio_sha256=sha256(row["path"]),
-            crop_sha256=hashlib.sha256(wave.numpy().tobytes()).hexdigest(),
-        )
+        return wave, row["id"]
 
 
 def collate(items):
@@ -194,8 +189,4 @@ class Encoder:
                     values[f"residual_{p}"] = unit(
                         pooled["near"][p] - 0.5 * pooled["far"][p]
                     )
-            for i, row in enumerate(metadata):
-                row["residual_sha256"] = hashlib.sha256(
-                    residual[i].cpu().numpy().tobytes()
-                ).hexdigest()
             yield values, metadata

@@ -7,7 +7,6 @@ Contact sheets and the index retain the interpretation and scales.
 
 import argparse
 import csv
-import hashlib
 import json
 from pathlib import Path
 import shutil
@@ -460,9 +459,6 @@ def main():
         original_pca_explained_variance_ratio=pca.explained_variance_ratio_.tolist(),
         projected_pca_explained_variance_ratio=ppca.explained_variance_ratio_.tolist(),
         tile_count=len(index),
-        renderer_sha256=hashlib.sha256(
-            Path(__file__).read_bytes()
-        ).hexdigest(),
     )
     (folder / "DISPLAY_METADATA.json").write_text(
         json.dumps(meta, indent=2) + "\n"
@@ -606,19 +602,6 @@ def main():
             "DISPLAY_METADATA.json",
         ]:
             archive.write(folder / name, name)
-    (folder / "MANIFEST.json").write_text(
-        json.dumps(
-            {
-                str(path.relative_to(folder)): (
-                    hashlib.sha256(path.read_bytes()).hexdigest()
-                )
-                for path in folder.rglob("*")
-                if path.is_file() and path.name != "MANIFEST.json"
-            },
-            indent=2,
-        )
-        + "\n"
-    )
     print(
         json.dumps(
             dict(

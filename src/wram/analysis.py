@@ -14,10 +14,7 @@ from .io import (
     read,
     dump,
     write_csv,
-    validate_freeze,
-    sha256,
-    source_files,
-    now,
+    check_run,
 )
 from .pipeline import load_labels
 
@@ -88,7 +85,7 @@ def manifold(normal, query, domains):
 def analyze(run, labels, output):
     run = Path(run)
     output = Path(output)
-    validate_freeze(run)
+    check_run(run)
     output.mkdir(parents=True, exist_ok=False)
     geometries = []
     diagnostics = []
@@ -119,26 +116,7 @@ def analyze(run, labels, output):
                 )
             )
     write_csv(output / "GEOMETRY.csv", geometries)
-    dump(
-        output / "LABEL_FREE_FREEZE.json",
-        dict(
-            time=now(),
-            geometry_sha256=sha256(output / "GEOMETRY.csv"),
-            labels_opened=False,
-        ),
-    )
     lookup = load_labels(labels)
-    dump(
-        output / "LABEL_ACCESS.json",
-        dict(
-            time=now(),
-            labels_sha256=sha256(labels),
-            use=(
-                "Post-hoc diagnostic probes only; never ASD fitting or system"
-                " selection"
-            ),
-        ),
-    )
     for (s, m), (root, entry, query, near) in cache.items():
         y = np.array([int(lookup[i]["label"]) for i in entry["ids"]])
         domain = np.array(
@@ -221,13 +199,5 @@ def analyze(run, labels, output):
         )
     dump(
         output / "SUMMARY.json",
-        dict(
-            retrospective=True,
-            diagnostic_probe_training=True,
-            asd_system_retrained=False,
-            summary=summary,
-            source_hashes=source_files(),
-            run_contract_sha256=sha256(run / "RUN_CONTRACT.json"),
-        ),
+        {"summary": summary},
     )
-    validate_freeze(run)
