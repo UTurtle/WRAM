@@ -35,6 +35,8 @@ Use new output paths for each run. `wram run` does not read labels.
 
 ## Results
 
+**Partially reproduced.**
+
 The recorded Wiener/RDP4/FPS128 run achieved harmonic-mean scores of **67.69%** on development and **67.36%** on evaluation. These are retrospective comparisons, not an official challenge submission. Matched controls and detailed results are in the [result bundle](results/floor_only_v1/README.md).
 
 Our code is MIT-licensed. Third-party code retains its original licenses; see [attribution](docs/ATTRIBUTION.md).
